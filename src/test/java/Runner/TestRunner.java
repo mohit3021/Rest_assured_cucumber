@@ -6,7 +6,7 @@ import cucumber.api.CucumberOptions;
 import cucumber.api.junit.Cucumber;
 
 @RunWith(Cucumber.class)
-@CucumberOptions(features="FeatureFiles", glue="StepDefination", plugin = {"pretty", "html:target/cucumber-html-report"})
+@CucumberOptions(features="FeatureFiles", glue="StepDefination", tags={"@smoke"}, plugin = {"pretty", "html:target/cucumber-html-report"})
 public class TestRunner {
 	
 

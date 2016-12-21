@@ -45,8 +45,7 @@ public class TokenAPI {
 
 	@Then("^Validate Status code$")
 	public void validate_Status_code() throws Throwable {
-
-		int staticcode = r.getStatusCode();
+        int staticcode = r.getStatusCode();
 		System.out.println(staticcode);
 
 	}
@@ -62,7 +61,6 @@ public class TokenAPI {
 	public void save_JWT_token_in_a_variable() throws Throwable {
 
 		JsonPath jsonPath = new JsonPath(responsebody);
-		System.out.println("inside save_JWT_token_in_a_variable()");  
 		jwttoken = jsonPath.get("jwt");
 		System.out.println("Here is JWT Token: " + jwttoken);
 
@@ -76,7 +74,7 @@ public class TokenAPI {
 		RestAssured.baseURI = "https://stage-api.core.merrillcorp.com";
 		r1 = RestAssured.given().authentication().oauth2(jwttoken, OAuthSignature.HEADER)
 				.contentType("application/json")
-				.body("{\r\n\"projectInfo\": {\r\n  \"active\": true,\r\n  \"datacenter\": \"Unique_DCenter_3\",\r\n  \"emailId\": \"dummyiud17h86@gmail.com\",\r\n  \"projectDescription\": \"Mohit_12ksharma_1hproject_details\",\r\n  \"projectName\": \"Mohit_h1Pjroject11140fd4\",\r\n  \"projectType\": \"M1Type\",\r\n  \"salesforceProjectId\": \"mm2Sales_Forjce_14146111\"\r\n}\r\n\r\n}")
+				.body("{\r\n\"projectInfo\": {\r\n  \"active\": true,\r\n  \"datacenter\": \"Unique_DCenter_3\",\r\n  \"emailId\": \"dummyiud101@gmail.com\",\r\n  \"projectDescription\": \"Mohit_sharma_project_details101\",\r\n  \"projectName\": \"Mohit_Pjroject101\",\r\n  \"projectType\": \"jev\",\r\n  \"salesforceProjectId\": \"SalesForjce_101\"\r\n}\r\n\r\n}")
 				.when().post("/api/projects");
 
 	}
@@ -89,7 +87,13 @@ public class TokenAPI {
 
 	@Then("^Validate Response Body for project$")
 	public void validate_Response_Body_for_project() throws Throwable {
-		System.out.println(r1.getBody().asString());
+		String responsebody1=r1.getBody().asString();
+		System.out.println(responsebody1);
+		JsonPath jsonPath = new JsonPath(responsebody1);
+		String projectId = jsonPath.get("projectId");
+		System.out.println("Here is Your ProjectID is: " + projectId);
+		
+		
 
 	}
 
