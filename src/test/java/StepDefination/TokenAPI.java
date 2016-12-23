@@ -18,7 +18,6 @@ public class TokenAPI {
 
 	Response r, r1;
 	String responsebody;
-
 	static String jwttoken;
 	
 
@@ -29,6 +28,7 @@ public class TokenAPI {
 		Object object = reader.read();
 
 		Map map = (Map) object;
+		
 		String pass = (String) map.get("password");
 
 		String user = (String) map.get("username");
@@ -96,5 +96,37 @@ public class TokenAPI {
 		
 
 	}
-
+	
 }
+
+	/*public com.jayway.restassured.response.Response getResponse(String body , String args){
+		RestAssured.baseURI = "https://stage-api.core.merrillcorp.com";
+		return RestAssured.given().authentication().oauth2(jwttoken, OAuthSignature.HEADER)
+				.contentType("application/json")
+				.body(body)
+				.when().post(args);
+	}
+
+	
+	
+ public void getBodyDetails(Response response) {
+	 System.out.println(response.getBody().toString());
+ }
+
+ public void getStatusCode(Response response) {
+	 System.out.println(response.getStatusCode());
+	 
+ }
+	
+ public void make_project_call_with_input_body_and_post_method_apitemp() throws Throwable {
+		Thread.sleep(5000);
+
+		System.out.println(jwttoken);
+		Response response = getResponse("{\r\n\"projectInfo\": {\r\n  \"active\": true,\r\n  \"datacenter\": \"Unique_DCenter_3\",\r\n  \"emailId\": \"dummyiud101@gmail.com\",\r\n  \"projectDescription\": \"Mohit_sharma_project_details101\",\r\n  \"projectName\": \"Mohit_Pjroject101\",\r\n  \"projectType\": \"jev\",\r\n  \"salesforceProjectId\": \"SalesForjce_101\"\r\n}\r\n\r\n}",
+				"/api/projects");
+		getBodyDetails(response);
+		getStatusCode(response);
+
+	}*/
+
+

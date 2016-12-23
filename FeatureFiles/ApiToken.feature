@@ -1,4 +1,6 @@
+@hello
 Feature: Test api for Token
+
 @smoke
 Scenario: Test Token API with Credentials
       Given Making api token request with post method API
